@@ -38,7 +38,6 @@ export class MyCounterComponent {
   }
 
   calculate(value: string) {
-    console.log('in calculate method', value);
     this.operations$.next(value);
     combineLatest(this.count$, this.operations$).subscribe(
       ([count, operation]) => {

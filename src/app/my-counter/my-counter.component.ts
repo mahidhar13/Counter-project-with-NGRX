@@ -41,11 +41,10 @@ export class MyCounterComponent {
     this.operations$.next(value);
     combineLatest(this.count$, this.operations$).subscribe(
       ([count, operation]) => {
-        console.log(operation);
-        if (value === 'addition') {
+        if (operation === 'addition') {
           console.log('result of addition', count + count);
         }
-        if (value === 'multiplication') {
+        if (operation === 'multiplication') {
           console.log('result of multiplication', count * count);
         }
       }

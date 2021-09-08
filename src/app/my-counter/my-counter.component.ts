@@ -39,26 +39,26 @@ export class MyCounterComponent {
 
   calculate(value: string) {
     this.operations$.next(value);
-    combineLatest([this.count$, this.operations$])
-      .pipe(
-        filter(item => item[1] === 'addition'),
-        // filter(item =>
-        //   item[1] === 'addition' ? item[0] + item[0] : item[0] * item[0]
-        // )
-        map(item => item[0] + item[0])
-      )
-      .subscribe(data => console.log('Only addition is working: ', data));
+    combineLatest([this.count$, this.operations$]);
+    // .pipe(
+    //   filter(item => item[1] === 'addition'),
+    //   // filter(item =>
+    //   //   item[1] === 'addition' ? item[0] + item[0] : item[0] * item[0]
+    //   // )
+    //   map(item => item[0] + item[0])
+    // )
+    // .subscribe(data => console.log('Only addition is working: ', data));
 
-    // combineLatest(this.count$, this.operations$).subscribe(
-    //   ([count, operation]) => {
-    //     if (operation === 'addition') {
-    //       console.log('result of addition', count + count);
-    //     }
-    //     if (operation === 'multiplication') {
-    //       console.log('result of multiplication', count * count);
-    //     }
-    //   }
-    // );
+    combineLatest(this.count$, this.operations$).subscribe(
+      ([count, operation]) => {
+        if (operation === 'addition') {
+          console.log('result of addition', count + count);
+        }
+        if (operation === 'multiplication') {
+          console.log('result of multiplication', count * count);
+        }
+      }
+    );
   }
 
   increment() {

@@ -42,6 +42,9 @@ export class MyCounterComponent {
     combineLatest([this.count$, this.operations$])
       .pipe(
         filter(item => item[1] === 'addition'),
+        // filter(item =>
+        //   item[1] === 'addition' ? item[0] + item[0] : item[0] * item[0]
+        // )
         map(item => item[0] + item[0])
       )
       .subscribe(data => console.log('Only addition is working: ', data));
